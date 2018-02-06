@@ -1,8 +1,8 @@
 # printf spacing padding
 
-AC02TV2D1HTDD:PROJECT_NAC USERID$ printf "\t\t%-16s %-14s %-0s\n" PORT_NUMBER IA_ZONE test
+COMPUTERNAME:PROJECT_NAC USERID$ printf "\t\t%-16s %-14s %-0s\n" PORT_NUMBER IA_ZONE test
 		PORT_NUMBER      IA_ZONE        test
-AC02TV2D1HTDD:PROJECT_NAC USERID$ printf "\t\t%-16s %-14s %-0s\n" PORT_NUMBER IA_ZONE test
+COMPUTERNAME:PROJECT_NAC USERID$ printf "\t\t%-16s %-14s %-0s\n" PORT_NUMBER IA_ZONE test
 
 Simple table. Format names to 7 places nad max 7 characters and format floating point number to 9 places with 2 decimals. More complicated sample script using printf formatting to create a table with multiple items. Save as a script make executable and run:
 
