@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE_DIR="/Users/386583"
+BASE_DIR="/Users/NOTME"
 main()
 {
 for FILE in $(ls ${BASE_DIR}/.cheat/)
