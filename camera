@@ -1,3 +1,3 @@
-#camera admin admin netplanner NetSecvlan
-nmap -sn 10.29.123.0/24
-nmap -p80 10.29.123.0/24
+#camera admin admin not a thing
+nmap -sn 10.10.10.0/24
+nmap -p80 10.10.10.0/24
