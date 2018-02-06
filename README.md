@@ -1,5 +1,5 @@
 # cheat
-poor man's reference
+poor man's reference. Basically a keyword search of flat files of notes, where keywords are at the top of the file. Just a quick, command-line way to keep track of those flags you needed for sed/awk/nmap or whatevs.
 
 Here is what some basic usage looks like:
 
