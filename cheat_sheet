@@ -1,4 +1,4 @@
-# BASH
+# BASH ldap ldapsearch
 # Delimiter to newline as opposed to tab/space default - for running for loops on entire lines.
 SAVEIFS="$IFS"
 IFS="\n"
