@@ -1,0 +1,5 @@
+#mysql mariadb 3306 grant privileges flush
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.100.%' IDENTIFIED BY 'my-new-password' WITH GRANT OPTION;
+
+also DON"T FORGET FIREWALLD ADD

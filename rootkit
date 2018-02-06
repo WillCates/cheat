@@ -1,0 +1,2 @@
+# rootkit rkhunter security
+sudo rkhunter -c

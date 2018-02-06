@@ -1,0 +1,10 @@
+# wireless airport scan
+
+computername:~ USERID$ sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /opt/local/sbin/airport
+computername:~ USERID$ airport
+
+airport -s
+
+
+$ networksetup -setairportpower airport on 
+$ networksetup -setairportpower airport off

@@ -1,0 +1,22 @@
+#powershell bloodhound sharphound neo4j
+
+PS C:\Users\USERID\Desktop> .\SharpHound.exe -c ACL -d DOMAIN.NET --SecureLdap --StatusInterval 20000
+Initializing BloodHound at 9:39 PM on 11/8/2017
+Ldap Connection Failure.
+Try again with the IgnoreLdapCert option if using SecureLDAP or check your DomainController option
+PS C:\Users\USERID\Desktop> .\SharpHound.exe -c ACL -d DOMAIN.NET --SecureLdap --IgnoreLdapCert --StatusInterval 20000
+Initializing BloodHound at 9:39 PM on 11/8/2017
+Ldap Connection Failure.
+Try again with the IgnoreLdapCert option if using SecureLDAP or check your DomainController option
+PS C:\Users\USERID\Desktop> .\SharpHound.exe -c ACL -d DOMAIN.NET --SecureLdap --IgnoreLdapCert --StatusInterval 20000
+Initializing BloodHound at 9:40 PM on 11/8/2017
+Ldap Connection Failure.
+Try again with the IgnoreLdapCert option if using SecureLDAP or check your DomainController option
+PS C:\Users\USERID\Desktop> .\SharpHound.exe -c ACL -d DOMAIN.NET --StatusInterval 20000
+Initializing BloodHound at 9:42 PM on 11/8/2017
+Starting ACL enumeration for DOMAIN.NET
+Status: 6645 objects enumerated (+6645 316.4286/s --- Using 103 MB RAM )
+Status: 21300 objects enumerated (+14650 519.5122/s --- Using 90 MB RAM )
+
+
+Above LDAP:389 connection is encrypted by default in SharpHound, according to blog post here: https://github.com/BloodHoundAD/SharpHound/issues/9 by rvazarkar

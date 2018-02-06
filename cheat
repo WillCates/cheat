@@ -1,0 +1,27 @@
+#!/bin/bash
+BASE_DIR="/Users/386583"
+main()
+{
+for FILE in $(ls ${BASE_DIR}/.cheat/)
+do
+        MATCH=$(head -n1 ${BASE_DIR}/.cheat/$FILE |grep -c $KEYWORD)
+        if [ ! $MATCH == "0" ]
+        then
+                cat ${BASE_DIR}/.cheat/$FILE
+        fi
+done
+}
+
+usage()
+{
+echo "cheat [KEYWORD]"
+}
+
+KEYWORD=$1
+
+if [ ! -z $KEYWORD ]
+then
+        main
+else
+        cat ${BASE_DIR}/.cheat/*
+fi

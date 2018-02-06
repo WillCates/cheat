@@ -1,0 +1,23 @@
+# getopts while if then
+
+while getopts 'c:o:tn' opt ; do
+	case "${opt}" in
+		c) CSV_FILE="$OPTARG" ;;
+		o) DEST_IP_PORT_HOSTNAME_FILE="$OPTARG" ;;
+		t) topt=1 ;;
+		n) nopt=1 ;;
+	esac
+done
+
+if [ -z $CSV_FILE ] || [ -z $DEST_IP_PORT_HOSTNAME_FILE ]
+then
+	echo "first"
+	usage
+fi
+
+if [ ! -z $topt ] && [ ! -z $nopt ]
+then
+	echo "second"
+	usage
+elif [ ! -z $topt ] && [ -z $nopt ]
+then

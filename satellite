@@ -1,0 +1,4 @@
+#satellite sat red hat rhel
+
+curl -X GET -s -k -d "per_page=500" -u xUSERID:PASSWORD https://satellite_server.domain.net/api/v2/hosts? | python -mjson.tool >all_hosts
+

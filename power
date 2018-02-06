@@ -1,0 +1,9 @@
+# power sleep timer
+
+To prevent your Mac from sleeping for one hour (3,600 seconds):
+$ caffeinate -u -t 3600
+
+To prevent your Mac from sleeping until the secure file copy (scp) completes:
+$ caffeinate -s scp bigfile me:myserver/bigfile
+
+
