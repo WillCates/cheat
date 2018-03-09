@@ -1,0 +1,51 @@
+# migrate filesystem switcharoo swap
+
+https://askubuntu.com/questions/656/how-to-move-usr-to-a-new-partition
+
+23
+down vote
+accepted
+It would be safest to use a Live CD, but you could do:
+
+copy all the files to a new partition, making sure that the contents of /usr do not change while you are doing this.
+edit /etc/fstab so that /usr will be mounted on the next reboot
+reboot
+delete the old files
+See below for details on each step.
+
+Note that you can't mount the new partition on /usr while running as there will be lots of files in /usr that will be open.
+
+Copying the files
+I would use cp -a. -a is the archive option. From the man page:
+
+-a, --archive
+          same as -dR --preserve=all
+...
+-d     same as --no-dereference --preserve=links
+...
+-P, --no-dereference
+          never follow symbolic links in SOURCE
+...
+--preserve[=ATTR_LIST]
+          preserve      the      specified      attributes       (default:
+          mode,ownership,timestamps),  if  possible additional attributes:
+          context, links, xattr, all
+...
+-R, -r, --recursive
+          copy directories recursively
+Editing /etc/fstab
+You need to know the UUID of your new partition. You can see the mapping by doing:
+
+$ ls -l /dev/disk/by-uuid/
+And then add this line to /etc/fstab:
+
+UUID=634c31a5-e27c-4e33-ac67-2e22491a30c2 /usr           ext4    defaults        0       2
+Change the UUID to your UUID, and change ext4 to be the file system type you are using - you should know this if you have set up the partition.
+
+Delete the old files
+After the reboot, the old files in /usr on the root partition will be hidden by the new partition mounted on /usr. But we can use some mount bind trickery to get to the old files and then delete them.
+
+$ sudo mount --bind / /mnt
+$ sudo rm -rf /mnt/usr
+$ sudo umount /mnt
+But some slight mistyping (say, hitting Enter when you'd only typed sudo rm -rf /mnt ) could cause disaster, so I would only use this method if you were very confident in what you were doing, really couldn't deal with any downtime, or had no physical access to the machine and hence were unable to boot off a live CD or live USB stick.
