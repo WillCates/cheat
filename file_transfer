@@ -1,0 +1,5 @@
+#ftp tftp file transfer 
+root@PWK-KALI:~/# mkdir /tftp
+root@PWK-KALI:~/# atftpd --daemon --port 69 /tftp
+root@PWK-KALI:~/# cp reverse_1337.exe /tftp/
+root@PWK-KALI:~/# 
