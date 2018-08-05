@@ -32,6 +32,7 @@ https://github.com/pentestmonkey/windows-privesc-check
 (Python)https://github.com/GDSSecurity/Windows-Exploit-Suggester
 https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk
 https://github.com/absolomb/WindowsEnum
+http://www.fuzzysecurity.com/tutorials/16.html
 
 #COMMANDS (cmd.exe)
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
