@@ -1,5 +1,8 @@
 #Windows xp local privilege escalation
 
+#Check for unquoted service path - reference the windows_general cheat sheet for info on 
+#how to loop through the services file to check for path, or enumerate with metasploit services module. 
+
 #Win 2000 / XP
 https://www.exploit-db.com/exploits/21923/ (Winlogon NetDDE)
 
