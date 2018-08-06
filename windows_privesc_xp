@@ -1,5 +1,8 @@
 #Windows xp local privilege escalation
 
+#Win 2000 / XP
+https://www.exploit-db.com/exploits/21923/ (Winlogon NetDDE)
+
 #XP SP3
 https://www.exploit-db.com/exploits/14788/ (Media Player Classic 6.4.9.1 (iacenc.dll) DLL Hijacking Exploit)
 https://www.exploit-db.com/exploits/14765/ (Mediaplayer Classic 1.3.2189.0 Dll Hijack Exploit)
@@ -9,8 +12,19 @@ http://www.exploit-db.com/exploits/34982 (IRP handler routines)
 exploit/windows/local/bthpan
 exploit/windows/local/mqac_write
 
+#XP SP2/SP3
+https://www.exploit-db.com/exploits/35850/
+https://www.exploit-db.com/exploits/9301/ (Multi-User Win32 Driver - win32k.sys <= 5.1.2600.5796)
+https://www.exploit-db.com/exploits/5518/ (win32k.sys - ms08-25)
+
+#XP SP3 English, 2003 SP2 Std/Enterprise Eng
+https://www.exploit-db.com/exploits/18176/ (Afd.sys Privilege Escalation Exploit)
+
 #XP SP2/SP3 + 2003 SP2
 https://www.exploit-db.com/exploits/14754/ (Microsoft Internet Connection Signup Wizard DLL Hijacking)
+
+#Windows XP/2K3/VISTA/2K8/7
+https://www.exploit-db.com/exploits/37098/ (Unverified)
 
 #XP SP2/SP3 + 2003 SP2 + Vista SP1/SP2 + 2008 Gold, SP2, R2 + Win7
 https://www.exploit-db.com/exploits/14745/ (Microsoft Address Book DLL Hijacking)
@@ -19,3 +33,6 @@ https://www.exploit-db.com/exploits/15609/ (UAC Bypass)
 
 #XP SP2/SP3 + 2003 SP2 + Vista SP2 + 2008 SP2, R2 SP1 + Win7 SP1 + Win8 + 2012 + RT
 https://www.exploit-db.com/exploits/33213/ | post/windows/reflective_dll_injection ('Windows NTUserMessageCall Win32k Kernel Pool Overflow (Schlamperei))
+
+#Win* x86
+https://www.exploit-db.com/exploits/40564/ (Windows x86 (all versions) AFD privilege escalation (MS11-046))
