@@ -1,0 +1,11 @@
+#privesc privilege escalation linux linenum linuxpriv root local general generic
+
+#METHODS
+1. Kernel exploits
+2. Exploiting services which are running as root (udev,samba,mysql,etc.)
+3. Exploiting SUID Executables (nmap drop shell)
+4. Exploiting SUDO rights/user (sudo -l)
+5. Exploiting badly configured cron jobs (check for world write: /etc/cron*, /var/spool/cron/*)
+6. Exploiting users with ‘.’ in their PATH (trick user into getting CWD where there is fake binary located to exec)
+7. Find stuff laying around (backups, bash_history, passwords, SSH Keys)
+
