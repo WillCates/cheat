@@ -1,6 +1,8 @@
 #privesc privilege escalation linux linenum linuxpriv root local general generic
 
-#METHODS
+#LINUX PRIVILEGE ESCALATION
+
+#COMMON TECHNIQUES:
 1. Kernel exploits
 2. Exploiting services which are running as root (udev,samba,mysql,etc.)
 3. Exploiting SUID Executables (nmap drop shell)
@@ -8,4 +10,16 @@
 5. Exploiting badly configured cron jobs (check for world write: /etc/cron*, /var/spool/cron/*)
 6. Exploiting users with ‘.’ in their PATH (trick user into getting CWD where there is fake binary located to exec)
 7. Find stuff laying around (backups, bash_history, passwords, SSH Keys)
+
+#RESOURCES:
+https://www.sans.org/reading-room/whitepapers/testing/attack-defend-Linux-privilege-escalation-techniques-2016-37562
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+https://github.com/rebootuser/LinEnum
+https://github.com/sleventyeleven/linuxprivchecker
+http://pentestmonkey.net/tools/audit/unix-privesc-check
+https://payatu.com/guide-linux-privilege-escalation/
+
+
+#COMMANDS:
+
 
