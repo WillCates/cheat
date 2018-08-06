@@ -1,0 +1,21 @@
+#Windows xp local privilege escalation
+
+#XP SP3
+https://www.exploit-db.com/exploits/14788/ (Media Player Classic 6.4.9.1 (iacenc.dll) DLL Hijacking Exploit)
+https://www.exploit-db.com/exploits/14765/ (Mediaplayer Classic 1.3.2189.0 Dll Hijack Exploit)
+http://www.exploit-db.com/exploits/34131 (IRP handler routines)
+http://www.exploit-db.com/exploits/34112 (IRP handler routines)
+http://www.exploit-db.com/exploits/34982 (IRP handler routines)
+exploit/windows/local/bthpan
+exploit/windows/local/mqac_write
+
+#XP SP2/SP3 + 2003 SP2
+https://www.exploit-db.com/exploits/14754/ (Microsoft Internet Connection Signup Wizard DLL Hijacking)
+
+#XP SP2/SP3 + 2003 SP2 + Vista SP1/SP2 + 2008 Gold, SP2, R2 + Win7
+https://www.exploit-db.com/exploits/14745/ (Microsoft Address Book DLL Hijacking)
+https://www.exploit-db.com/exploits/15894/ (window class handling issue)
+https://www.exploit-db.com/exploits/15609/ (UAC Bypass)
+
+#XP SP2/SP3 + 2003 SP2 + Vista SP2 + 2008 SP2, R2 SP1 + Win7 SP1 + Win8 + 2012 + RT
+https://www.exploit-db.com/exploits/33213/ | post/windows/reflective_dll_injection ('Windows NTUserMessageCall Win32k Kernel Pool Overflow (Schlamperei))
