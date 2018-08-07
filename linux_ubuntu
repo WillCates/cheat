@@ -2,3 +2,7 @@
 
 #Ubuntu 9.10 32-bit (2.6.31-14-generic-pae):
 https://www.exploit-db.com/raw/14339/ (PAM MOTD Exploit - TESTED [FRESH Ubuntu 9.10 Install])
+
+#Ubuntu 9.10 with ReiserFS filesystem mounted with 'user_xattr' option (<= 2.6.34-rc3):
+https://www.exploit-db.com/exploits/12130/
+
