@@ -1,7 +1,7 @@
 # cheat
-poor man's reference. Basically a keyword search of flat files of notes, where keywords are at the top of the file. Just a quick, command-line way to keep track of those flags you needed for sed/awk/nmap or whatevs.
+Poor man's reference. Basically a keyword search of flat files of notes, where keywords are at the top of the file. Just a quick, command-line way to keep track of those flags you needed for sed/awk/nmap or whatevs.
 
-Here is what some basic usage looks like:
+Here is what some basic usage looks like (searching for keyword 'awk' below):
 
 
 
@@ -18,5 +18,5 @@ Here is what some basic usage looks like:
  computername:~ userid$
 
 
-This is assuming that the 'cheat' script is in your local $PATH variable.
+This is assuming that the 'cheat' script is in your local $PATH variable. I typically put the 'cheat' script in /usr/sbin, but as long as it is in your path, you should be able to use it globally. You will also need to change the base directory variable in the script to match whatever directory you store the '.cheat' directory in that contains all the notes files. 
 
