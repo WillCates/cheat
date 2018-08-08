@@ -1,0 +1,7 @@
+#Cracking password protected hashcat john fcrackzip
+
+#Resources:
+crackstation.net
+
+fcrackzip -D -p /usr/share/wordlists/rockyou.txt -u /path/to/some/file.zip.passwordprotected
+
