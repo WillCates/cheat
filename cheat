@@ -23,5 +23,6 @@ if [ ! -z $KEYWORD ]
 then
         main
 else
-        cat ${BASE_DIR}/.cheat/*
+        echo "Please choose one of the following categories:"
+        ls -l ${BASE_DIR}/.cheat/
 fi
