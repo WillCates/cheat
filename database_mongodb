@@ -1,5 +1,8 @@
 #database privesc mongodb scheduler
 
+#Resources:
+https://rastating.github.io/hackthebox-node-walkthrough/
+
 #scheduler privesc:
 Conditions: You are on the box as user A, the application, /var/scheduler/app.js is running as user B. User B has permissions to user.txt.
 /var/scheduler/app.js has a mongodb connection string in it, and appears to run commands scheduled by the database.
