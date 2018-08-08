@@ -119,3 +119,23 @@ find / -name perl*
 find / -name python*
 find / -name gcc*
 find / -name cc
+
+#Password Searching
+N=20; grep -iroP ".{0,$N}mongodb\:\/\/.{0,$N}" .
+N=20; grep -iroP ".{0,$N}passw.{0,$N}" .
+N=20; grep -iroP ".{0,$N}Pwd=.{0,$N}" .
+N=20; grep -iroP ".{0,$N}Password=.{0,$N}" .
+N=20; grep -iroP ".{0,$N}secret.{0,$N}" .
+N=20; grep -iroP ".{0,$N}apikey.{0,$N}" .
+N=20; grep -iroP ".{0,$N}api key.{0,$N}" .
+N=20; grep -iroP ".{0,$N}RSA PRIVATE KEY.{0,$N}" .
+
+#Sensitive File Searching
+find / -type f -name *id_rsa*
+find / -type f -name *.yaml
+find / -type f -name *web.config*
+find / -type f -name *.password
+find / -type f -name *.passwd
+find / -type f -name app.js
+
+
