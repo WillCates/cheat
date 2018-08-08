@@ -15,6 +15,7 @@ done
 usage()
 {
 echo "cheat [KEYWORD]"
+exit 1
 }
 
 KEYWORD=$1
@@ -25,4 +26,6 @@ then
 else
         echo "Please choose one of the following categories:"
         ls -l ${BASE_DIR}/.cheat/
+        echo
+        usage
 fi
