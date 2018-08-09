@@ -4,5 +4,6 @@
 https://www.exploit-db.com/raw/14339/ (PAM MOTD Exploit - TESTED [FRESH Ubuntu 9.10 Install])
 
 #Ubuntu 9.10 / RedHat with ReiserFS filesystem mounted with 'user_xattr' option (<= 2.6.34-rc3):
-https://www.exploit-db.com/exploits/12130/
+https://www.exploit-db.com/exploits/12130/ (ls -la will not show the .reiserfs_priv dir, try 'cd' to it. 
+It will be at the base of the mountpoint for the ReiserFS volume. Exploit can be run from the reiserfs volume. - TESTED [PWK])
 
