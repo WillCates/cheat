@@ -21,3 +21,19 @@ document.write("Site is at: " + document.location.href + ".");
 
 DOM example Request:
 GET http://someserver.com/somepage.php?id=whatever#<script>alert()</script>
+
+DOM-Based logic note & testing: The ability to test may rely on a number of factors. If, for instance, the page checks with an if/else
+statement to check the user agent, and one outcome includes a 'location.href' and the other does not, you may not discover this in 
+testing, depending on your user agent. See this example code of that situation, from the owasp site referenced above:
+
+<script>
+var navAgt = navigator.userAgent;
+ 
+if (navAgt.indexOf("MSIE")!=-1) {
+     document.write("You are using IE as a browser and visiting site: " + document.location.href + ".");
+}
+else
+{
+    document.write("You are using an unknown browser.");
+}
+</script>
