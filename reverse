@@ -1,4 +1,4 @@
-#reverse php bash shell tty
+#reverse php bash shell tty powershell
 
 #Spawn a tty as well:
 python -c 'import pty; pty.spawn("/bin/sh")'
