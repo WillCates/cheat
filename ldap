@@ -1,0 +1,4 @@
+#anonymous ldap ldapsearch ad
+
+#This is an anonymous LDAP connection. Lots of info can be gained from this. -W to auth. 
+ldapsearch -h host.net -p 389 -x -b "dc=domain,dc=net" "CN=usernamehere"
