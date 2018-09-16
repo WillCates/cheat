@@ -1,0 +1,3 @@
+#steg steganography hidden
+
+steghide extract -sf merlin.jpg
