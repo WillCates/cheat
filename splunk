@@ -1,0 +1,10 @@
+#splunk query index lookup 
+
+#Lookups - Append this to any search to pull from list
+#Match from Lookup:
+[ inputlookup something.csv |field FIELD_FROM_LOOKUP_FILE |rename FIELD_FROM_LOOKUP_FILE as FIELD_TO_MATCH ]
+#Match everything BUT fields from lookup:
+NOT [ inputlookup something.csv |field FIELD_FROM_LOOKUP_FILE |rename FIELD_FROM_LOOKUP_FILE as FIELD_TO_MATCH ]
+#Match one field from lookup and then match another field on another column from lookup:
+[ inputlookup something.csv |field FIELD1_FROM_LOOKUP_FILE |rename FIELD1_FROM_LOOKUP_FILE as FIELD1_TO_MATCH ] |search [ inputlookup something.csv |field FIELD2_FROM_LOOKUP_FILE |rename FIELD2_FROM_LOOKUP_FILE as FIELD2_TO_MATCH ]
+
