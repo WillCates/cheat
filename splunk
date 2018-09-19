@@ -1,4 +1,4 @@
-#splunk query index lookup 
+##splunk query index lookup 
 
 #Lookups - Append this to any search to match against list
 #Match from Lookup:
@@ -18,3 +18,6 @@ Example (will print a table of action name and ID):
 #Windows Firewall outbound traffic to non-USA
 index=windowsindex EventCode=5156 Direction=Outbound |iplocation Destination_Address |search NOT Country="United States"
 
+#CIDR - Splunk supports by default:
+index=firewalls destination_ip!=192.168.0.0/16
+index=firewalls NOT [inputlookup internal_cidr.csv |fields cidr |rename cidr as destination_ip]
