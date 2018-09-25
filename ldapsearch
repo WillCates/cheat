@@ -1,0 +1,3 @@
+#ldapsearch ldap ad active directory
+# SEARCHING AD
+ldapsearch -Hldaps://domain.net -x -D "USERID@domain.net" -b "dc=domain,dc=net" -W -L "cn=NONAME MCGEE" |grep "NONAME MCGEE\|userAccountControl" 
