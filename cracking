@@ -5,3 +5,10 @@ crackstation.net
 
 fcrackzip -D -p /usr/share/wordlists/rockyou.txt -u /path/to/some/file.zip.passwordprotected
 
+#Hashcat
+https://hashcat.net/wiki/doku.php?id=example_hashes  <----- For Mode Lookup
+
+hashcat -m 7400 HASH_FILE /usr/share/wordlists/rockyou.txt    <---- This is for Cracking SunOS 5.11 Shadow Hash
+
+
+
