@@ -4,6 +4,7 @@
  - Enumerate a base list with dirb or dirbuster, plus a list with the supported framework extension
  - Run nikto on the webapp
  - Try default credentials on all authentication portals
+ - Check for erroneous comments in the source of the pages
  - Determine version or year that the webapp was created
  - Look for public exploits for that version/year and webapp
  - Run SQLMap against any GET related inputs
