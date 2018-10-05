@@ -1,0 +1,3 @@
+# java jad decompile reverse class
+
+jad java.class <--- Will decompile java.class file. 
