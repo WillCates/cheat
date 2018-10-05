@@ -1,0 +1,8 @@
+#strategy methodology process tactics
+
+ 
+ - for i in `cat list`;do nmap -sC -sV -p- -Pn --open -T4 $i -oA $i; done
+ - Reconnoitre Each System
+ - Use WebApp Checklist for web applications.
+ - Check for all software versions and public exploits/vulnerabilities
+ - LinEnum, linuxprivchecker, Sherlock as first thing for privesc. 
