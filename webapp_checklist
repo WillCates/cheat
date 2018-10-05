@@ -1,4 +1,4 @@
-#webapp checklist
+#webapp checklist strategy
 
  - Try to determine the frameworks supported (ASP, ASPX, PHP)
  - Enumerate a base list with dirb or dirbuster, plus a list with the supported framework extension
