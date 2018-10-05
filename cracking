@@ -10,5 +10,56 @@ https://hashcat.net/wiki/doku.php?id=example_hashes  <----- For Mode Lookup
 
 hashcat -m 7400 HASH_FILE /usr/share/wordlists/rockyou.txt    <---- This is for Cracking SunOS 5.11 Shadow Hash
 
+#Ok this is pretty damn fast (Note 'Time Estimated' at 20 Sec):
+C:\Users\REDACTED\Documents\hashcat\hashcat-4.2.0\hashcat-4.2.0>hashcat64.exe -m 400 hashes\hash.REDACTED2.txt rockyou.txt -O -w 3
 
+hashcat (v4.2.0) starting...
+
+* Device #1: WARNING! Kernel exec timeout is not disabled.
+             This may cause "CL_OUT_OF_RESOURCES" or related errors.
+             To disable the timeout, see: https://hashcat.net/q/timeoutpatch
+nvmlDeviceGetFanSpeed(): Not Supported
+
+OpenCL Platform #1: NVIDIA Corporation
+======================================
+* Device #1: GeForce GTX 1060 with Max-Q Design, 1536/6144 MB allocatable, 10MCU
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Applicable optimizers:
+* Optimized-Kernel
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 55
+
+Watchdog: Temperature abort trigger set to 90c
+
+Dictionary cache hit:
+* Filename..: rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [q]uit =>
+
+Session..........: hashcat
+Status...........: Running
+Hash.Type........: phpass, WordPress (MD5), phpBB3 (MD5), Joomla (MD5)
+Hash.Target......: $P$BiVoTj899ItS1EZnMhqeqVbrZI4Oq0/
+Time.Started.....: Thu Oct 04 22:57:04 2018 (2 secs)
+Time.Estimated...: Thu Oct 04 22:57:26 2018 (20 secs)
+Guess.Base.......: File (rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.Dev.#1.....:   692.7 kH/s (57.93ms) @ Accel:512 Loops:256 Thr:256 Vec:1
+Recovered........: 0/1 (0.00%) Digests, 0/1 (0.00%) Salts
+Progress.........: 2/14344385 (0.00%)
+Rejected.........: 2/2 (100.00%)
+Restore.Point....: 0/14344385 (0.00%)
+Candidates.#1....: 123456 -> saytin31
+HWMon.Dev.#1.....: Temp: 58c Util:100% Core:1531MHz Mem:3802MHz Bus:8
 
