@@ -6,4 +6,5 @@
  - Use WebApp Checklist for web applications.
  - Check for all software versions and public exploits/vulnerabilities
  - For user/pw combos found - try on ALL login interfaces (SSH, FTP, HTTP, etc) EVEN IF YOU FIND ONE THAT WORKS - TRY ON ALL OF THEM. 
+ - Hashes that need to be cracked, first check rainbow tables, second transfer to host systems and crack with hashcat (fast). Reference the 'cracking' file.
  - LinEnum, linuxprivchecker, Sherlock as first thing for privesc. 
