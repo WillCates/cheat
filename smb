@@ -10,3 +10,9 @@ enum4linux
 #Connect to SMB share:
 smbclient //10.10.10.X/[Volume_With_Permisssions]
 
+
+#list all files/dirs:
+smbmap -H 10.10.10.100 -R [save data to file]
+
+#find dirs and parse to use with smbget:
+for i in $(cat dirs |grep "\.\\\\" |sed 's/.*\.\\//g;s/\\/\//g;s/ /\\\ /g'); do smbget -R smb://10.10.10.100/Replication$i; done
