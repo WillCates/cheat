@@ -1,0 +1,12 @@
+#SMB smbclient smbmap enum4linux
+
+nmap --script *smb* # Most of these scripts do not support SMBv2+
+
+#Enumerate SMB Shares:
+smbmap
+smbclient -L //10.10.10.X
+enum4linux
+
+#Connect to SMB share:
+smbclient //10.10.10.X/[Volume_With_Permisssions]
+
