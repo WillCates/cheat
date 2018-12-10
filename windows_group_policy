@@ -1,5 +1,6 @@
 #Groups.xml cpassword gpo group policy gpp-decrypt gp3finder
 
+This typically is only found on Win2008 or older. 
 Found in this directory:
 smb://10.10.10.100/Replication/active.htb/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Preferences/Groups//Groups.xml
 
