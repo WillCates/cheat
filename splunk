@@ -37,6 +37,12 @@ index=proxies somefield=*part*
 ## SIMPLE SEARCHES
 #
 
+#List all indices you have access to:
+| eventcount summarize=false index=* | dedup index | fields index
+
+#List all indices in a sourcetype:
+|metadata type=sourcetypes index=someindex
+
 # To see data summaries:
 index=blah sourcetype=blahblah field=something NOT otherfield=somethingelse |top limit=100 somefield
 index=blah sourcetype=blahblah field=something NOT otherfield=somethingelse |stats count(somefield) by someotherfield, some3rdfield
