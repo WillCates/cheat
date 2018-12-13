@@ -93,6 +93,20 @@ index=windowsindex EventCode=5156 Direction=Outbound |iplocation Destination_Add
 index=firewalls destination_ip!=192.168.0.0/16
 index=firewalls NOT [inputlookup internal_cidr.csv |fields cidr |rename cidr as destination_ip]
 
+#License Volume:
+ index=_internal  source=*license_usage.log* type="Usage" earliest=-30d@d latest=@d
+  | fields _time, pool, idx, b, h
+ |search h="g*"
+  | eval idx=if(len(idx)=0 OR isnull(idx),"(UNKNOWN)",idx)
+ |eval h=if(len(h)=0 OR isnull(h),"(UNKNOWN)",h)
+  | bin _time span=1d
+  | stats sum(b) as b by _time, pool, h
+  | stats sum(b) AS volume by h, _time
+  | stats avg(volume) AS avgVolume max(volume) AS maxVolume by h
+  | eval avgVolumeGB=round(avgVolume/1024/1024/1024,3)
+  | eval maxVolumeGB=round(maxVolume/1024/1024/1024,3)
+  | fields h, avgVolumeGB, maxVolumeGB
+  | rename avgVolumeGB AS "average" maxVolumeGB AS "peak" h AS "host"
 
 #
 ## GOOD REFERENCE
