@@ -1,8 +1,60 @@
 ##splunk query index lookup 
 
-#Lookups - Append this to any search to match against list
+#
+##
+### THINGS TO **NOT** DO. DO NOT DO!! DANGER!!!
+##
+#
+
+# The main point of this section is to illuminate the fact that you can slow down Splunk for 
+# everyone with bad searches. I think it is usually a per-index danger. 
+
+#Terrible - even with key words after - this pulls all data from all indices:
+index=*
+
+#Don't do this if you can help it - wildcard on either side of the field value is slow:
+index=proxies somefield=*part*
+
+#DONT UPLOAD/USE GIANT LISTS
+
+#DONT HAVE TOO MANY PANELS IN YOUR DASHBOARD
+
+#DONT EVER SEARCH FOR ALL TIME - GENERALLY LIMIT TO 7 DAYS OR SMALLER, UNLESS YOU KNOW EXACTLY WHAT YOU ARE LOOKING FOR
+
+#DONT MODIFY AN IN PROGRESS SEARCH AND HIT ENTER AGAIN - STOP THE FIRST SEARCH FIRST - IT STILL RUNS AFTER YOU START A NEW ONE OTHERWISE
+
+#DONT OPEN A BUNCH OF DASHBOARDS - EVERY TIME YOU OPEN A DASHBOARD, A SEARCH FOR EVERY PANEL KICKS OFF. 
+
+#
+##
+### THINGS TO DO - GOOD THINGS - DO THESE.
+##
+#
+
+#DO STOP JOBS WITH THE SQUARE STOP BUTTON IF THEY ARE TAKING TOO LONG
+
+#
+## SIMPLE SEARCHES
+#
+
+# To see data summaries:
+index=blah sourcetype=blahblah field=something NOT otherfield=somethingelse |top limit=100 somefield
+index=blah sourcetype=blahblah field=something NOT otherfield=somethingelse |stats count(somefield) by someotherfield, some3rdfield
+
+#To see full data output:
+index=blah sourcetype=blahblah field=something
+index=blah sourcetype=blahblah field=something NOT otherfield=somethingelse
+
+#To search for IP addresses in a subnet - Splunk support CIDR out of the box:
+index=blah sourcetype=blahblah ip=192.168.0.0/24
+
+#
+## LOOKUPS - Append this to any search to match against list
+#
+
 #Match from Lookup:
 [ inputlookup something.csv |field FIELD_FROM_LOOKUP_FILE |rename FIELD_FROM_LOOKUP_FILE as FIELD_TO_MATCH ]
+
 #Match everything BUT fields from lookup:
 NOT [ inputlookup something.csv |field FIELD_FROM_LOOKUP_FILE |rename FIELD_FROM_LOOKUP_FILE as FIELD_TO_MATCH ]
 #Match one field from lookup and then match another field on another column from lookup:
@@ -11,12 +63,22 @@ NOT [ inputlookup something.csv |field FIELD_FROM_LOOKUP_FILE |rename FIELD_FROM
 #On-the-Fly Lookups based on other data:
 index=BLAH KEYWORD NOT [|search index=BLAH sourcetype=BLAH earliest=-2d |top host by whatever |fields host] |top something
 
+#
+## - EVAL - Changing the names of fields or values, working with Multi-Values
+#
+
 #Eval - rename based on event type
 |eval NEW_FIELD=case(EXISTING_FIELD, "Content to display") |top NEW_FIELD
-Example (will print a table of action name and ID):
+
+#Example (will print a table of action name and ID):
 |eval MS_Action=case(EventCode=4624, "User Login") |top MS_Action by EventCode
+
 #Eval Multi-Value in same field (Selects the second value in the field below)
 |eval User_Account=mvindex(Account_Name,1) |search User_Account="superman"
+
+#
+## MISC
+#
 
 #Windows Firewall outbound traffic to non-USA
 index=windowsindex EventCode=5156 Direction=Outbound |iplocation Destination_Address |search NOT Country="United States"
@@ -24,3 +86,15 @@ index=windowsindex EventCode=5156 Direction=Outbound |iplocation Destination_Add
 #CIDR - Splunk supports by default:
 index=firewalls destination_ip!=192.168.0.0/16
 index=firewalls NOT [inputlookup internal_cidr.csv |fields cidr |rename cidr as destination_ip]
+
+
+#
+## GOOD REFERENCE
+#
+
+https://wiki.splunk.com/Things_I_wish_I_knew_then
+
+http://docs.splunk.com/Documentation/Splunk/7.2.1/Search/Writebettersearches
+
+https://gosplunk.com/
+
