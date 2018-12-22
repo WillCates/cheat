@@ -1,5 +1,11 @@
 # bloodhound windows sharphound kerberose kerberoastable domain admins controller
 
+#Ingestors:
+https://github.com/BloodHoundAD/BloodHound/tree/master/Ingestors
+
+#Pre-compiled BH Binaries:
+https://github.com/BloodHoundAD/BloodHound/releases
+
 #Find kerberoastable via the bloodhound/sharphound data, then you can do this:
 
 GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
