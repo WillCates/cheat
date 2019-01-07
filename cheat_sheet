@@ -1,7 +1,7 @@
 # BASH ldap ldapsearch ifs saveifs while for
 # Delimiter to newline as opposed to tab/space default - for running for loops on entire lines.
 SAVEIFS="$IFS"
-IFS="\n"
+IFS=$'\n'
 	DO STUFF
 IFS="$SAVEIFS"
 
