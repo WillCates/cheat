@@ -83,6 +83,13 @@ index=BLAH KEYWORD NOT [|search index=BLAH sourcetype=BLAH earliest=-2d |top hos
 |eval User_Account=mvindex(Account_Name,1) |search User_Account="superman"
 
 #
+## - RAW - Creating fields from Regex raw extraction mid search
+#
+
+#This makes the field 'USERID' only what comes after the domain where the User ID is DOMAIN\userid
+index=WINDOWS_INDEX EventID=4624 |rex field=_raw ".*\\\\(?<USERID>[a-zA-Z0-9\_\-\$]+)" |top USERID limit=100
+
+#
 ## MISC
 #
 
