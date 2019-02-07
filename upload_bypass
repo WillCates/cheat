@@ -1,0 +1,7 @@
+#upload file restrictions bypasss
+
+#Thing 1:
+change the content-type header from 'application/x-php' to 'image/jpeg'
+
+#Thing 2:
+double extension technique: change bad.php to bad.php.jpeg
