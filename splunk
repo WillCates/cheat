@@ -118,6 +118,20 @@ index=firewalls NOT [inputlookup internal_cidr.csv |fields cidr |rename cidr as 
   | rename avgVolumeGB AS "average" maxVolumeGB AS "peak" h AS "host"
 
 #
+## STATS AND DATA VOLUME
+#
+
+#Check highest producers of traffic:
+index=cisco_ips
+| fields src_bytes src_ip _time
+| stats sum(src_bytes) as total_bytes by src_ip
+| sort - total_bytes
+| eval total_mb=round(total_bytes/1048576, 2)
+| fields - total_bytes
+
+
+
+#
 ## GOOD REFERENCE
 #
 
