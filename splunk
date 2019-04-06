@@ -129,7 +129,17 @@ index=cisco_ips
 | eval total_mb=round(total_bytes/1048576, 2)
 | fields - total_bytes
 
+#Check highest producers of traffic:
+index=cisco_ips dest_port=53
+| fields src_bytes src_ip _time
+| stats sum(src_bytes) as total_bytes by src_ip
+| sort - total_bytes
+| eval total_mb=round(total_bytes/1048576, 2)
+| fields - total_bytes
 
+#Check Counts of DNS requests:
+index=cisco_ips dest_port=53
+| fields src_ip |stats count by src_ip |sort - count
 
 #
 ## GOOD REFERENCE
