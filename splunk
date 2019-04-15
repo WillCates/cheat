@@ -141,6 +141,14 @@ index=cisco_ips dest_port=53
 index=cisco_ips dest_port=53
 | fields src_ip |stats count by src_ip |sort - count
 
+#Check IFACE usage over time:
+index=cisco_ips
+| fields src_bytes iface_egress iface_ingress _time
+| stats sum(src_bytes) as total_bytes by iface_ingress, iface_egress
+| sort - total_bytes
+| eval total_mb=round(total_bytes/1048576, 2)
+| fields - total_bytes
+
 #
 ## GOOD REFERENCE
 #
