@@ -91,6 +91,9 @@ index=WINDOWS_INDEX EventID=4624 |rex field=_raw ".*\\\\(?<USERID>[a-zA-Z0-9\_\-
 "Source Network Address: (?<Source_Network_IP>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})"
 |rex field=Message "Client Address:  ::ffff:(?<Client_IP>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})"
 
+#Raw for IPv4 address at the beginning of the line:
+|rex field=_raw "^(?<IPADDR>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})"
+
 #
 ## MISC
 #
