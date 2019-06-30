@@ -1,0 +1,22 @@
+#python comprehensions programming loops conditions uppercase lowercase
+
+#extract uppercase from a string
+>>> s = 'abcdefgABCDEFGHIJKLMNOP'
+>>> ''.join([c for c in s if c.isupper()])
+'ABCDEFGHIJKLMNOP'
+
+#Regex Method:
+>>> re.sub('[^A-Z]', '', s)
+'ABCDEFGHIJKLMNOP'
+
+#for/if method with isupper:
+for s in quote:
+    for x in s:
+        if x.isupper():
+            print(x)
+            
+#check if in string method:
+for char in quote:
+    if char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        print(char, end='')
+        
