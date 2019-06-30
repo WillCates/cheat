@@ -20,3 +20,16 @@ for char in quote:
     if char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
         print(char, end='')
         
+#iterate through range with step (prints every number divisible by 7, 0 to 100):
+for i in range(0, 100, 7):
+    print(i)
+    
+#print numbers that AREN'T divisible by 3 or 5:
+for i in range(0, 20):
+    if (i % 3 == 0) or (i % 5 == 0):
+        continue
+    print(i)
+
+#augmented assignment:
+for i in range(0, multiplier):
+    answer += number
