@@ -27,3 +27,32 @@ print(another_even = even) #This will return 'True' because they are the same ob
 another_even = list(even) #this assigns a new list as a separate object.
 print(another_even = even) #this will return 'False' if the list function was used to assign the value of 'even' to 'another_even'
 print(another_even == even) #this will return 'True' as it is a comparison operator checking if the values are the same, not if it is the same object in memmory
+
+#append to list
+list = []
+list.append(["something", "something else"])
+
+#nested loops printing lists:
+#'meal' is a set of sets as such:
+>>> menu = []
+>>> menu.append(["egg", "spam", "bacon"])
+>>> menu.append(["egg", "sausage", "bacon"])
+>>> menu.append(["egg", "spam"])
+>>> menu.append(["egg", "bacon", "spam"])
+>>> menu.append(["egg", "bacon", "sausage", "spam"])
+>>> menu.append(["spam", "bacon", "sausage", "spam"])
+>>> menu.append(["spam", "egg", "spam", "spam", "bacon", "spam"])
+>>> menu.append(["spam", "egg", "sausage", "spam"])
+
+#checking for if the set doesn't contain 'spam', print the letters of the ingredients:
+>>> for meal in menu:
+...     if not "spam" in meal:
+...             for ingredient in meal:
+...                     for letter in ingredient:
+...                             print(letter)
+...
+e
+g
+g
+...
+
