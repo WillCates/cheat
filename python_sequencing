@@ -23,4 +23,7 @@ doing 'sorted(numbers)' does NOT take action on the 'numbers' array, but instead
 even = [2, 4, 6, 8]
 another_even = even # this binds both of those lists together, and any operation on one of them will affect both.
 another_even.sort(reverse=True) # this will affect the sorting of both 'another_even' and 'even'
+print(another_even = even) #This will return 'True' because they are the same object.
 another_even = list(even) #this assigns a new list as a separate object.
+print(another_even = even) #this will return 'False' if the list function was used to assign the value of 'even' to 'another_even'
+print(another_even == even) #this will return 'True' as it is a comparison operator checking if the values are the same, not if it is the same object in memmory
