@@ -1,0 +1,35 @@
+#python dictionaries sets
+
+#dictionaries and sets are UNORDERED data, and cannot be indexed. 
+#dictionaries and sets are not accessed via index, they are accessed by means of a key
+#good opportunity for 'split' and 'join' methods.
+#can be thought of as a key-value pair in many cases. Almost like a database where you have a key4
+#Note the curly braces in the definition/assignment, and the double quotes when printing using keys
+#Can use different types for the VALUE, but not the field/key
+
+#Dictionaries:
+my_dict = {"md5_hash": "an artifact used to describe a file",
+          "ip_address": "an artifact used to describe a network location",
+          "domain": "an artifact used to describe a website name",
+          "total_ips": 2532}
+          
+>>> print(my_dict["md5_hash"])
+an artifact used to describe a file
+>>> print(my_dict["md5_hash"][0])       #In use with an index after specifying key, as the output from key could be considered list type
+a
+>>>
+
+#add to a dictionary. There is no 'append' for dictionaries
+my_dict["new_key"] = "some new value"
+
+#nice while loop to lookup items from a dict:
+while True:
+  keyword = input("Enter a key to search for\n")
+  if keyword == "quit":
+    break
+  lookup = my_dict.get(keyword, "we don't have a " + keyword)
+  print(lookup)
+
+#Key check method
+for keyword in my_dict:
+  do something
