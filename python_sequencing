@@ -1,4 +1,4 @@
-#python sequencing tuple
+#python sequencing tuple ranges lists
 
 #https://docs.python.org/3.3/library/stdtypes.html#sequence-types-list-tuple-range
 x in s	True if an item of s is equal to x, else False	(1)
@@ -55,4 +55,28 @@ e
 g
 g
 ...
+
+#iterables: string, list, ranges, tuples
+my_iter = iter(string)
+count = len(string)
+for i in range(0, count):
+  print(next(my_iter))
+  
+#ranges:
+print(range(100)) #will default to range(0, 100)
+#step range:
+range(0, 100, 2) #every two numbers (even)
+range(1, 100, 2) #every two numbers (odd)
+#ranges don't take much space unless you create a list from the range when you have a long range.
+print(some_iterable_item[5]) #will print 6th item in the list
+
+#Tuples are like lists, but cannot be changed - immutable
+#lists are enclosed in square brackets, tuples are enclosed in parentheses 
+#can have different data types within a tuple
+
+
+
+
+
+
 
