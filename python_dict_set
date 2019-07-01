@@ -1,7 +1,7 @@
 #python dictionaries sets
-
+#Reference https://thomas-cokelaer.info/tutorials/python/data_structures.html
 #dictionaries and sets are UNORDERED data, and cannot be indexed. 
-#dictionaries and sets are not accessed via index, they are accessed by means of a key
+#dictionaries are not accessed via index, they are accessed by means of a key
 #good opportunity for 'split' and 'join' methods.
 #can be thought of as a key-value pair in many cases. Almost like a database where you have a key4
 #Note the curly braces in the definition/assignment, and the double quotes when printing using keys
@@ -33,3 +33,13 @@ while True:
 #Key check method
 for keyword in my_dict:
   do something
+
+#Sets
+#unordered data, NOT accessed via key
+# they are immutable
+
+#create sets two ways:
+
+set1 = {"something", "something2", "something3"} #defined within curly braces, without keys
+set2 = set(["nothing", "nothing2", "nothing3"]) #list passed to set function creates a set. 
+
