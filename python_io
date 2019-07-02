@@ -1,0 +1,28 @@
+#python input output file write read
+
+#Reading files:
+somefile = open("/path/to/file",'r')
+for line in somefile:
+  print(line, end='') #the 'end' statement tells print to not print an additional newline character if there is one already in the file.
+somefile.close()
+
+#method to read without having to close ('with' takes care of the cleanup)
+with open("/path/to/file",'r') as somefile:
+  for line in somefile:
+    if "JAB" in line.upper():
+      print(line, end='')
+
+#Read file and assign lines to a list
+linelist = []
+with open("/path/to/file",'r') as somefile:
+  for line in somefile:
+    linelist.append(line.strip('\n'))     #removes newline char before placing item in list
+                                          #.strip only removes things from the end or the beginning of a line/iterable
+
+#Writing to file:
+somelist = ["one", "two", "three", "four", "five"]
+with open("C:\\Path\\to\\Windows\\File.txt",'w') as numbers:
+  for number in somelist:
+    print(number, file=numbers)
+
+
