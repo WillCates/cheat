@@ -30,3 +30,7 @@ PS C:\Users\kostas\Desktop> IEX(New-Object Net.WebClient).downloadString('http:/
 get-aduser -filter {(FIELD1 -Like "something") [-or|-and] (FIELD2 -Like "something")}
 #count of the whole lot. 
 (get-aduser -filter {(FIELD1 -Like "something") [-or|-and] (FIELD2 -Like "something")}).count
+
+
+#Get Digital Users that start with certain user ID chars:
+get-aduser -Filter "(Department -Like '*Digital*') -and (SamAccountName -Like 'chars*')" -Properties Department,Name,SamAccountName |Export-Csv -Path .\digital_contractors.csv -NoTypeInformation
