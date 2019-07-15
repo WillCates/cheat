@@ -1,0 +1,5 @@
+#tls ssl decryption openssl
+
+openssl s_client -showcerts -verify 5 -connect somewebsite_with_TLS.com
+
+#Can pull the full cert chain and copy to /etc/pki/ca-trust/source/anchors/ and then do 'update-ca-trust'
