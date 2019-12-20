@@ -172,7 +172,8 @@ index=o365* Operation=New-InboxRule ("Parameters{}.Name"=*Subject* AND "Paramete
 #find blocked SSH to internet
 index=firewall-* dest_port=22 action=blocked NOT(dest_ip=10.0.0.0/8 OR dest_ip=172.16.0.0/12 OR dest_ip=192.168.0.0/16) (src_ip=10.0.0.0/8 OR src_ip=172.16.0.0/12 OR src_ip=192.168.0.0/16)|top index by dest_ip, dest_port, src_ip, action
 
-
+#SSH not on port 22:
+index=firewall-* dest_port!=22 service=SSH
 
 
 
