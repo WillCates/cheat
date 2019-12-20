@@ -175,5 +175,6 @@ index=firewall-* dest_port=22 action=blocked NOT(dest_ip=10.0.0.0/8 OR dest_ip=1
 #SSH not on port 22:
 index=firewall-* dest_port!=22 service=SSH
 
-
+#DNS Tunnelling/TXT Method
+index=firewall sourcetype=fgt_log qtype=TXT subtype="dns-response" NOT(qname=*.sk OR qname=_* OR qname=*.dscsc.net OR qname=*.dsnu.net OR qname=*.dsadns.net OR qname=*.sophosxl.net OR qname=*.pf-d.ca OR qname=*.lookout.com OR qname=*.amazonses.com OR qname=*.mcafee.com OR qname=*.outlook.com OR qname=*.amazon.com OR qname=*.onmicrosoft.com OR qname=*.logmein-gateway.com) |where len(qname)>30 |top qname by srcip
 
