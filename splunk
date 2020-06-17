@@ -39,6 +39,8 @@ index=proxies somefield=*part*
 
 #List all indices you have access to:
 | eventcount summarize=false index=* | dedup index | fields index,count |search count!=0
+OR
+|tstats count where index=* by index
 
 #List all indices in a sourcetype:
 |metadata type=sourcetypes index=someindex
