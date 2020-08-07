@@ -180,3 +180,14 @@ index=firewall-* dest_port!=22 service=SSH
 #DNS Tunnelling/TXT Method
 index=firewall sourcetype=fgt_log qtype=TXT subtype="dns-response" NOT(qname=*.sk OR qname=_* OR qname=*.dscsc.net OR qname=*.dsnu.net OR qname=*.dsadns.net OR qname=*.sophosxl.net OR qname=*.pf-d.ca OR qname=*.lookout.com OR qname=*.amazonses.com OR qname=*.mcafee.com OR qname=*.outlook.com OR qname=*.amazon.com OR qname=*.onmicrosoft.com OR qname=*.logmein-gateway.com) |where len(qname)>30 |top qname by srcip
 
+#
+## Time Thresholds and Bucketing
+#
+
+| bucket _time span=1h
+| stats count(dest_port) as num_events by src _time
+| streamstats window=5 mean(num_events) as moving_avg by src
+| eval spike=if(num_events > (2 * moving_avg),1,0)
+
+...
+|transaction fieldsomething startswith=blah=something endswith=blah2=something2 maxspan=6m maxpause=3m
