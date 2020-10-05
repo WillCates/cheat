@@ -34,3 +34,7 @@ get-aduser -filter {(FIELD1 -Like "something") [-or|-and] (FIELD2 -Like "somethi
 
 #Get Digital Users that start with certain user ID chars:
 get-aduser -Filter "(Department -Like '*Digital*') -and (SamAccountName -Like 'chars*')" -Properties Department,Name,SamAccountName |Export-Csv -Path .\digital_contractors.csv -NoTypeInformation
+
+#PowerShell Port Scanner
+1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("10.0.0.100",$_)) "Port $_ is open!"} 2>$null
+
