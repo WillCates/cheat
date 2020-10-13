@@ -8,6 +8,11 @@ fcrackzip -D -p /usr/share/wordlists/rockyou.txt -u /path/to/some/file.zip.passw
 #Hashcat
 https://hashcat.net/wiki/doku.php?id=example_hashes  <----- For Mode Lookup
 
+#Better way to lookup by length(96 chars below) in PS:
+$hashes=(.\hashcat64.exe --example-hashes | where {$_.split('HASH: ')[-1].length -like 96})
+.\hashcat64.exe --example-hashes |Select-String $hashes -Context 2,1
+
+
 hashcat -m 7400 HASH_FILE /usr/share/wordlists/rockyou.txt    <---- This is for Cracking SunOS 5.11 Shadow Hash
 
 #Ok this is pretty damn fast (Note 'Time Estimated' at 20 Sec):
