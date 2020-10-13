@@ -1,0 +1,19 @@
+# curl post get http jq json
+
+#This POST request can be grabbed by viewing the post via UI in the Burp Interface/proxy
+#POST request with JSON response unparsed:
+ curl -XPOST -S --data-binary '{"name":""}' http://10.10.10.179/api/getColleagues -H 'Content-Type: application/json' 2>/dev/null
+[{"id":1,"name":"Sarina Bauer","position":"Junior Developer","email".......
+
+#POST request with JSON response PARSED with JQ:
+root@NCC1701:~/HTB/MACHINES# curl -XPOST -S --data-binary '{"name":""}' http://10.10.10.179/api/getColleagues -H 'Content-Type: application/json' 2>/dev/null |jq '.'[].name |tr -d '"'
+Sarina Bauer
+Octavia Kent
+Christian Kane
+Kimberly Page
+Shayna Stafford
+James Houston
+Connor York
+Reya Martin
+.....
+
