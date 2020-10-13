@@ -29,3 +29,11 @@
 #BRAINFUCK: https://www.dcode.fr/brainfuck-language
 #BRAINFUCK:
 +++++ +++++ [->++ +++++ +++<] >++++ +.--- --.++ +++++ .<+++ [->++ +<]>+++.<+ ++[-> ---<] >---- --.-- ----- .<+++ +[->+ +++<] >+++. <+++[ ->---<]>-- .<+++ [->++ +<]>+ .---. <+++[ ->--- <]>-- ----. <++++ [->++ ++<]>++..<
+
+#python for encoding into UTF-16
+#!/usr/bin/env python
+input=raw_input('> ').strip()
+utf=[]
+for i in input:
+    utf.append("\\u00"+hex(ord(i)).split('x')[1])
+print ''.join([i for i in utf])
