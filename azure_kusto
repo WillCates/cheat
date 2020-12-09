@@ -1,0 +1,32 @@
+#azure kusto inventory
+#Kusto Notes
+
+# Go to 'All Resources > Open Query'
+# https://mihai-albert.com/2020/10/01/get-the-list-of-all-azure-vms-with-all-their-private-and-public-ips/
+
+#Find public IPs per subscription
+Resources
+| where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
+| summarize count () by subscriptionId
+
+#Get all properties from one virtual machine
+Resources
+| where type =~ 'microsoft.compute/virtualmachines' and name =~ 'VMNAME'
+
+#Get all virtual machines with their VM ID + Private + Public IP addresses
+Resources
+    | where type =~ 'microsoft.compute/virtualmachines'
+    | project vmId = tolower(tostring(id)), vmName = name
+    | join (Resources
+        | where type =~ 'microsoft.network/networkinterfaces'
+        | mv-expand ipconfig=properties.ipConfigurations
+        | project vmId = tolower(tostring(properties.virtualMachine.id)), privateIp = ipconfig.properties.privateIPAddress, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)
+        | join kind=leftouter (Resources
+            | where type =~ 'microsoft.network/publicipaddresses'
+            | project publicIpId = id, publicIp = properties.ipAddress
+        ) on publicIpId
+        | project-away publicIpId, publicIpId1
+        | summarize privateIps = make_list(privateIp), publicIps = make_list(publicIp) by vmId
+    ) on vmId
+    | project-away vmId1
+    | sort by vmName asc
