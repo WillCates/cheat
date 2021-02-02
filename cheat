@@ -4,7 +4,7 @@ main()
 {
 for FILE in $(ls ${BASE_DIR}/.cheat/)
 do
-        MATCH=$(head -n1 ${BASE_DIR}/.cheat/$FILE |grep -c $KEYWORD)
+        MATCH=$(head -n1 ${BASE_DIR}/.cheat/$FILE |grep -ic $KEYWORD)
         if [ ! $MATCH == "0" ]
         then
                 cat ${BASE_DIR}/.cheat/$FILE
