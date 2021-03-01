@@ -1,0 +1,13 @@
+#phish phishing macro word excel wordpad
+
+#Note that this activates and grabs the picture BEFORE macros are called.
+Insert > Quick Parts > Field > Links & References > IncludePicture > Enter URL of canary image
+
+#malicious RTF file (https://github.com/bhdresh/CVE-2017-0199)
+Nishang has several HTA payloads that you can include PS in the script
+
+In general, RTF process will be 1) send RTF file to victim, 2) RTF calls back to HTA file to get more payload (stage 2, sorta), then
+3) you can use the HTA script to call out for more data/more bad on a 3rd script, such as a PS1 Reverse Nishang script.
+
+#Mailing attachments with smtp server specified:
+echo "please convert RTF" |s-nail -s "RTF" -a evil.rtf -S from="<jim@somedomain.com>" -S mta=smtp://10.0.0.1:25 someguy@victimdomain.com
