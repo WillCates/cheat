@@ -101,3 +101,14 @@ term
 - [x] Write the press release
 - [ ] Update the website
 - [ ] Contact the media
+
+## Syntax Highlighting Code Block
+
+```html
+<p> this is a test </p>
+```
+
+```javascript
+let num= Math.Random();
+```
+
