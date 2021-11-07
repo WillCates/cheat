@@ -1,0 +1,4 @@
+# av antivirus defender mppreference
+
+# Exclude a Path in Defender:
+Set-MpPreference -ExclusionPath 'C:\Windows\Temp'
