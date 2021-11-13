@@ -1,4 +1,4 @@
-#email netcat socket smtp
+#email netcat socket smtp pop pop3
 
 HELO smtp.domain.com
 MAIL FROM:<alice@hacker.com>
@@ -18,3 +18,36 @@ From: [Alice Hacker] <alice@hacker.com>
 
    .
  QUIT
+
+
+POP3
+
+
+Command	Description	Example
+USER [username]	1st login command	USER Stan
++OK Please enter a password
+PASS [password]	2nd login command	PASS SeCrEt
++OK valid logon
+QUIT	Logs out and saves any changes	QUIT
++OK Bye-bye.
+STAT	Returns total number of messages and total size	STAT
++OK 2 320
+LIST	Lists all messages	LIST
++OK 2 messages (320 octets)
+1 120
+2 200
+…
+LIST 2
++OK 2 200
+RETR [message]	Retrieves the whole message	RETR 1
++OK 120 octets follow.
+***
+DELE [message]	Deletes the specified message	DELE 2
++OK message deleted
+NOOP	The POP3 server does nothing, it merely replies with a positive response.	NOOP
++OK
+RSET	Undelete the message if any marked for deletion	RSET
++OK maildrop has 2 messages (320 octets)
+TOP [message] [number]	Returns the headers and number of lines from the message	TOP 1 10
++OK
+***
