@@ -51,3 +51,6 @@ RSET	Undelete the message if any marked for deletion	RSET
 TOP [message] [number]	Returns the headers and number of lines from the message	TOP 1 10
 +OK
 ***
+
+#Kali Utility for sending emails from command line:
+sendEmail -t user@domain -f sender@domain -u "email issues" -a test3.hta -s 192.168.92.159:25 -m "Hey dude?" -vv -o fqdn=mail.domain.com
