@@ -9,3 +9,11 @@ CTRL+B [0-9] - Switches to tmux window in session
 tmux attach -t 0  - kills session 0
 Copy Text: Hold Fn + Select Text, then Release Fn, Cmd + C to copy
 Paste Text: Cmd + V
+
+
+## Send command to multiple panes
+ctrl + b :
+setw synchronize-panes on
+
+ctrl + b :
+setw synchronize-panes off
