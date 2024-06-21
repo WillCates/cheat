@@ -1,0 +1,16 @@
+#python functions arguments
+
+#default / optional variable 'c'
+def func(a, b, c=10)
+#Calling function
+func(a=2, b=4, c=11)
+
+#Forced function type
+def func(alpha:int,bravo:float)
+#Syntactical type suggestion (not enforced)
+func(alpha:int,bravo:float)->str:
+
+#Returning & Assigning multiple outputs from function:
+def somefunc():
+  return x, y
+a,b = somefunc()
