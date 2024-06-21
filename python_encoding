@@ -1,0 +1,23 @@
+#python encoding decoding encode decode utf
+
+#Bytes to strings:
+	- b'\x41\x42'.decode()
+#Strings to Bytes:
+	- 'this is my string'.encode()
+
+#Count number of bytes:
+some_bytes.encode().count(b'')
+
+#hex string to hex int
+int(hex_string.encode(),16)
+
+# Base64 conversion
+  - import base64
+	- base64.b64decode(string)
+#rot13 decode/encode:
+  - import codecs
+	- codecs.encode(d.data(20), 'rot_13')
+#Character to ordinal value:
+	- ord()
+#Ordinal value to character
+	- chr()
