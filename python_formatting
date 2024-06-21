@@ -1,0 +1,48 @@
+#python formatting slicing character
+
+#format() reference: https://note.nkmk.me/en/python-format-zero-hex/
+#{ARG#:<FILL><ALIGN><LENGTH><TYPE>}
+# <#>:<F><A><L><T> (FALT)
+#EXAMPLE(pos 1, dash fill, left align, string type):
+		- {1:-<20s}
+#EXAMPLE(pos 2, zero fill, right align, byte type):
+		- {2:0>20b}
+#EXAMPLE(pos 0, zero fill, right align, float type with two decimal places):
+		- {0:0>20.2f}
+
+#F Strings, Python 3.6+
+ - f"some string {x:0>20b}"
+
+#Raw strings - putting a 'r' in front of the string negates special characters and escape characters
+#Example: will not print the tab character, but literally '\t'
+ - r"test my \t tab"
+
+#Special Character Notes:
+	- '\b' moves the cursor left
+
+#Format with leading padding:
+str(format(int(hex(some_string), 16), '0=10X'))
+
+#Removing the 'b' in bytes (gets string)
+	- str(some_byte_string.decode('utf-8'))
+ 
+#String Formatting:
+	- "this is my {} string, with {} variables for format".format("first",2)
+
+#Can also assign based on number of position:
+		- "string {0} test {1} test {1}".format("zero", "one")
+
+#Can also format in place:
+		- "number {0:08b} or string {1:%^5}".format(10,"test")
+		- EXAMPLE: >>> "number {0:08b} and a test string {1:%^20}".format(15,"test")
+			'number 00001111 and a test string %%%%%%%%test%%%%%%%%'
+
+#Can also tag positions:
+		- "test {item1} string {item2}".format(item1=10,item2="string")
+
+#Printing backward characters
+	- "".join(reversed(string))
+	- slicing [::-1]
+
+#print backward, every other character:
+[::-2]
