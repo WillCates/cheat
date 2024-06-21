@@ -1,0 +1,15 @@
+#python variables objects read input namespaces
+
+#User input:
+x = input("Enter name")
+
+#Variable namespace override
+# Use rule LEGB (Local, Enclosing, Global, Builtin)
+nonlocal a = 10
+global b = 11
+__builtins__.VARNAME = something
+
+#Show Variables in namespace
+globals()
+locals()
+
