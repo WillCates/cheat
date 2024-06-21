@@ -13,3 +13,13 @@ __builtins__.VARNAME = something
 globals()
 locals()
 
+#if you import a library, you can check the library objects:
+dir(LIBRARY)
+
+#object types:
+ - Literals
+ - Keywords
+ - Operators
+ - Delimiters
+ - Comments
+ - Variables
