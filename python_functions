@@ -14,3 +14,6 @@ func(alpha:int,bravo:float)->str:
 def somefunc():
   return x, y
 a,b = somefunc()
+
+#Can overwrite entire python functions via assignment (may want to save old function or restart the python process/namespace to fix)
+x = print, print = 100
