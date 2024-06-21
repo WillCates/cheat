@@ -1,0 +1,16 @@
+#python variables types
+
+#Variable Types
+	- int()
+	- float()
+	- str()
+	- byte()
+	- list()
+	- tuple()
+	- dict()
+  - bytearray()
+
+#Check type:
+  - type(variable)
+
+#bytearrays are mutable
